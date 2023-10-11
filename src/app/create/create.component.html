@@ -1,0 +1,32 @@
+<br>
+<div>
+  <button routerLink="/add" class="btn btn-outline-dark">Shto kurs</button>
+</div>
+<br>
+<table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Kodi</th>
+        <th>Emri i kursit</th>
+        <th>Numri i krediteve</th>
+        <th>Lektori</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of courses$ | async">
+        <td>{{ c.payload.val().code }}</td>
+        <td>{{ c.payload.val().name }}</td>
+        <td>{{ c.payload.val().credits }}</td>
+        <td>{{ c.payload.val().lecturer }}</td>
+        <td>
+          <button [routerLink]="['/add/', c.key]" class="btn btn-outline-light" matTooltip='Modifiko'>
+            <mat-icon color='primary'>edit</mat-icon>
+          </button>
+          <button (click)='delete(c.key)' class="btn btn-outline-light" matTooltip='Fshi'>
+            <mat-icon color='warn'>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+</table>

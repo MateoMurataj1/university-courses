@@ -1,0 +1,23 @@
+<br>
+<table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Kodi</th>
+        <th>Emri i kursit</th>
+        <th>Numri i krediteve</th>
+        <th>Lektori</th>
+        <th>Nr i studenteve qe kane zgjedhur kursin</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of courses$ | async">
+        <td>{{ c.payload.val().code }}</td>
+        <td>{{ c.payload.val().name }}</td>
+        <td>{{ c.payload.val().credits }}</td>
+        <td>{{ c.payload.val().lecturer }}</td>
+        <td>{{ c.payload.val().quantity }}</td>
+        <td><button (click)="addToCart(c)" class="btn btn-light" matTooltip="Zgjidh">Zgjidh</button></td>
+      </tr>
+    </tbody>
+</table>

@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">University</a>
+      
+      <div  class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li *ngIf='auth.user$ | async as user' class="nav-item">
+            <a class="nav-link" routerLink="/create">Krijo kurse</a>
+          </li>
+          <li *ngIf='auth.user$ | async as user' class="nav-item">
+            <a class="nav-link" routerLink="/choose">Zgjidh kurset</a>
+          </li>
+          <li *ngIf='auth.user$ | async as user' class="nav-item">
+            <a class="nav-link" routerLink="/my-courses">Kurset e mia</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink='/login'>Login</a>
+          </li>
+          <li ngbDropdown *ngIf='auth.user$ | async as user' class="nav-item dropdown">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">{{ user.displayName }}</a>
+            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" (click)='logout()'>Log out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
